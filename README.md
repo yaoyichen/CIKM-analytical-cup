@@ -32,7 +32,7 @@
 
 解决方案的流程分为前处理，特征提取，模型训练三个部分。前处理步骤中，完成局部图像的拼接，并通过SIFT描述子寻找时间方向的对应关系，获得云团运动的轨迹。特征描述中，将问题的特征归纳为3部分，分别为时间空间方向的矢量描述，云团形状的统计描述，及由云团轨迹外推得到目标站点的雷达反射率的空间图像描述。模型训练主模型采用了卷积神经网络CNN，图像部分采用2层卷积池化，随后将向量拉平到一维，即在全连接层与其余非图像类特征合并，共同输入到2个隐藏层的神经网络中。
 
-![image.png-41kB][5]
+<center> ![image.png-41kB][5] </center>
 
 ---------
 
@@ -70,7 +70,7 @@
 
 __时间外插反射率图像__：由上述的图像拼接及轨迹追踪后，能够定位出全场的速度矢量见下图。以泰勒冻结假设和关键点匹配追踪到未来1.5个小时流场速度矢量后，能够外插未来每个坐标点的运动轨迹，即能够推测出未来位于目标站点上方的云团，在当前时刻雷达图像上的空间坐标。 图中白色圆圈坐标点的云团，会在1.5小时由图中对流矢量的作用下，运动到红色目标站点上方。因此截取空间轨迹上白点周围41×41大小，3个空间高度(1.5km,2.5km,3.5km)的局部图像作为卷积神经网络的图像输入。
 
-![image.png-182kB][11]
+![sub-image.png-1299.2kB][11]
 
 __时间和空间特征提取__: 在时间和空间方向（高度方向）提取图像像素的统计值（平均值、最大值、极值点个数、方差等等），作为时空特征的描述输入CNN的全连接层。
 
@@ -113,5 +113,5 @@ __全局云团形状特征提取__: 某些特定的云层形态会对应典型�
 [8]: http://static.zybuluo.com/Jessy923/3o2949c5zhgedqk2qtopyhqd/image.png
 [9]: http://static.zybuluo.com/Jessy923/xc5f2t0ktkz1baz4zu8otpc4/image.png
 [10]: http://static.zybuluo.com/Jessy923/mwxwbewrprskzgkpifpwz789/image.png
-[11]: http://static.zybuluo.com/Jessy923/4rgo9ru9b2hwgm6yqk72f277/image.png
+[11]: http://static.zybuluo.com/Jessy923/f23cd7tdwedcvk9knnc2j2hg/sub-image.png
 [13]: http://static.zybuluo.com/Jessy923/1dqg9w65jqec1zy1sauxf3oz/Rank.png
