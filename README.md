@@ -17,7 +17,7 @@
 - 赛题提供10,000组的雷达图像样本。每组样本包含60幅图像，为过去90分钟内(间隔6 min,共15帧)，分布在4个高度(0.5km, 1.5km, 2.5km, 3.5km)上的雷达反射率图像。
 
 - 每张雷达图像大小为[101,101]，对应的空间覆盖范围为101×101km。每个网格点记录的是雷达反射率因子值Z。反射率因子，表征气象目标对雷达波后向散射能力的强弱，散射强度一定程度上反映了气象目标内部降水粒子的尺度和数密度，进而推测其与降水量之间的联系。
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/g5z39b2lv88avj6r577272z5/image.png" width="750" height="237" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/yjkm0woyl7m7l596wg1fftgo/sample_example.jpg" width="750" height="237" alt="Item-based filtering" /></div>
 
 - 目标：利用各个雷达站点在不同高度上的雷达历史图像序列，预测图像中心位于[50,50]坐标位置的目标站点未来1-2小时之间的地面总降水量，损失函数为降水量预测值与真实值的均方误差。
 
