@@ -17,7 +17,7 @@
 - 赛题提供10,000组的雷达图像样本。每组样本包含60幅图像，为过去90分钟内(间隔6 min,共15帧)，分布在4个高度(0.5km, 1.5km, 2.5km, 3.5km)上的雷达反射率图像。
 
 - 每张雷达图像大小为[101,101]，对应的空间覆盖范围为101×101km。每个网格点记录的是雷达反射率因子值Z。反射率因子，表征气象目标对雷达波后向散射能力的强弱，散射强度一定程度上反映了气象目标内部降水粒子的尺度和数密度，进而推测其与降水量之间的联系。
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/yjkm0woyl7m7l596wg1fftgo/sample_example.jpg" width="750" height="237" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/yjkm0woyl7m7l596wg1fftgo/sample_example.jpg" width="750" height="200" alt="Item-based filtering" /></div>
 
 - 目标：利用各个雷达站点在不同高度上的雷达历史图像序列，预测图像中心位于[50,50]坐标位置的目标站点未来1-2小时之间的地面总降水量，损失函数为降水量预测值与真实值的均方误差。
 
@@ -46,11 +46,11 @@
 ## 轨迹追踪
  根据流体力学中的泰勒冻结假设(Taylor Frozen Hypothesis)，流场中存在显著的时空关联特性，即可以认为雷达反射图中云团在短时间内趋向于在空间以当地平均对流速度平移，短时间内并不会发生外形或者反射强度的剧烈改变。即监测点x处在未来τ时刻后的雷达信号f，能够通过平均对流速度U，从当前时刻t位于坐标的x-Uτ的信号中体现：
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/3o2949c5zhgedqk2qtopyhqd/image.png" width="357" height="31" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/3o2949c5zhgedqk2qtopyhqd/image.png" width="300" height="26" alt="Item-based filtering" /></div>
 
  为了寻找每个空间坐标对应的对流速度U， 可以通过SIFT描述子在一定时间间隔内，在空间坐标上的匹配，寻找相同关键点在较短时间间隔δt内像素的平移量δx,即得到空间每个位置处的对流速度。
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/xc5f2t0ktkz1baz4zu8otpc4/image.png" width="277" height="67" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/xc5f2t0ktkz1baz4zu8otpc4/image.png" width="250" height="62" alt="Item-based filtering" /></div>
 
  下图给出了相邻两帧图像上，SIFT描述子及相应的空间匹配关系。其中圆圈大小对应了关键点的特征尺度，圆圈中的刻度方向表征其主方向。两帧图像的匹配连线基本平行，即全场以一个近似相同的速度作对流运动。
 
@@ -61,7 +61,7 @@
 
  __时间外插反射率图像__：由上述的图像拼接及轨迹追踪后，能够定位出全场的速度矢量见下图。以泰勒冻结假设和关键点匹配追踪到未来1.5个小时流场速度矢量后，能够外插未来每个坐标点的运动轨迹，即能够推测出未来位于目标站点上方的云团，在当前时刻雷达图像上的空间坐标。 图中白色圆圈坐标点的云团，会在1.5小时由图中对流矢量的作用下，运动到红色目标站点上方。因此截取空间轨迹上白点周围41×41大小，3个空间高度(1.5km,2.5km,3.5km)的局部图像作为卷积神经网络的图像输入。
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/f23cd7tdwedcvk9knnc2j2hg/sub-image.png" width="850" height="445" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/fz8ydlptd2uuuwhbmlftivjd/sub-image.png" width="850" height="445" alt="Item-based filtering" /></div>
 
 __时间和空间特征提取__: 在时间和空间方向（高度方向）提取图像像素的统计值（平均值、最大值、极值点个数、方差等等），作为时空特征的描述输入CNN的全连接层。
 
