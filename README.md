@@ -1,4 +1,4 @@
-# 雷达图像预测未来降水-CIKM AnalytiCup Top1清华团队思路分享(附代码）
+# 雷达图像预测未来降水-CIKM AnalytiCup Top1清华团队思路分享
 
 ![image.png-165.7kB][1]
 
