@@ -9,8 +9,6 @@
 
 > 比赛官网：[阿里天池大数据平台](https://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100066.0.0.773ef42f8FXDoN&raceId=231596)
 
-> 完整解题方案及代码:[https://github.com/yaoyichen/CIKM-Cup-2017](https://github.com/yaoyichen/CIKM-Cup-2017)
-
 ![image.png-143.8kB][2]
 
 
@@ -107,7 +105,6 @@
 
 > 李中杰: lizhongjie1989@163.com
 
-> 完整解题方案及代码:[https://github.com/yaoyichen/CIKM-Cup-2017](https://github.com/yaoyichen/CIKM-Cup-2017)
 
 [1]: http://static.zybuluo.com/Jessy923/yjrme4ex0yk17szix7f474uo/image.png
 [2]: http://static.zybuluo.com/Jessy923/3bx4m8agc2lkgjikjkeqice6/image.png
