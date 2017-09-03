@@ -1,28 +1,28 @@
 # 雷达图像预测未来降水-CIKM AnalytiCup Top1清华团队思路分享
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/yjrme4ex0yk17szix7f474uo/image.png" width="1250" height="300" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/yjrme4ex0yk17szix7f474uo/image.png" width="1250" height="230" alt="Item-based filtering" /></div>
 
 ---------
-    《基于雷达图像的短期降水预报》是由ACM顶级数据挖掘会议___CIKM___举办的数据科学竞赛。CIKM 2017以__“智慧城市，智慧型国家”__为主题，通过人工智能同各学科领域的交叉研究，通过技术手段有效管理城市。
+    《基于雷达图像的短期降水预报》是由ACM顶级数据挖掘会议CIKM举办的数据科学竞赛。CIKM 2017以“智慧城市，智慧型国家”为主题，通过人工智能同各学科领域的交叉研究，通过技术手段有效管理城市。
 
-    本次 ___CIKM AnalytiCup 2017___ 由__深圳气象局__与__阿里巴巴__联合承办，旨在提升基于雷达回波外推数据的短期降水预报的准确性。比赛共吸引了来自全球__1395__个团队，来自__清华大学__的__Marmot团队__(姚易辰，李中杰)在比赛中脱颖而出，在复赛中以绝对优势排名第一。团队解题方案的核心思路如下：
+    本次 ___CIKM AnalytiCup 2017___ 由深圳气象局与阿里巴巴联合承办，旨在提升基于雷达回波外推数据的短期降水预报的准确性。比赛共吸引了来自全球1395个团队，来自清华大学的Marmot团队(姚易辰，李中杰)在比赛中脱颖而出，在复赛中以绝对优势排名第一。团队解题方案的核心思路如下：
 
  比赛官网：[阿里天池大数据平台](https://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100066.0.0.773ef42f8FXDoN&raceId=231596)
 
  完整解题方案及代码:[https://github.com/yaoyichen/CIKM-Cup-2017](https://github.com/yaoyichen/CIKM-Cup-2017)
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/3bx4m8agc2lkgjikjkeqice6/image.png" width="950" height="350" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/3bx4m8agc2lkgjikjkeqice6/image.png" width="750" height="277" alt="Item-based filtering" /></div>
 
 ---------
 
 ## 赛题目标
 
-- 赛题提供__10,000__组的雷达图像样本。每组样本包含60幅图像，为过去__90分钟__内(间隔6 min,共15帧)，分布在__4个高度__(0.5km, 1.5km, 2.5km, 3.5km)上的雷达反射率图像。
+- 赛题提供10,000组的雷达图像样本。每组样本包含60幅图像，为过去90分钟内(间隔6 min,共15帧)，分布在4个高度(0.5km, 1.5km, 2.5km, 3.5km)上的雷达反射率图像。
 
-- 每张雷达图像大小为[101,101]，对应的空间覆盖范围为__101×101km__。每个网格点记录的是雷达__反射率__因子值Z。反射率因子，表征气象目标对雷达波后向__散射__能力的强弱，散射强度一定程度上反映了气象目标内部降水粒子的尺度和数密度，进而推测其与降水量之间的联系。
+- 每张雷达图像大小为[101,101]，对应的空间覆盖范围为101×101km。每个网格点记录的是雷达反射率因子值Z。反射率因子，表征气象目标对雷达波后向散射能力的强弱，散射强度一定程度上反映了气象目标内部降水粒子的尺度和数密度，进而推测其与降水量之间的联系。
 <div  align="center"> <img src="http://static.zybuluo.com/Jessy923/g5z39b2lv88avj6r577272z5/image.png" width="950" height="300" alt="Item-based filtering" /></div>
 
-- 目标：利用各个雷达站点在不同高度上的雷达历史图像序列，预测图像__中心__位于[50,50]坐标位置的目标站点__未来1-2小时__之间的地面总降水量，损失函数为降水量预测值与真实值的__均方误差__。
+- 目标：利用各个雷达站点在不同高度上的雷达历史图像序列，预测图像中心位于[50,50]坐标位置的目标站点未来1-2小时之间的地面总降水量，损失函数为降水量预测值与真实值的均方误差。
 
 <div  align="center"> <img src="http://static.zybuluo.com/Jessy923/ad2ays0gtnd9kf5fxd5kqh97/image.png" width="950" height="400" alt="Item-based filtering" /></div>
 
