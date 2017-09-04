@@ -26,7 +26,7 @@
 
  解决方案的流程分为前处理，特征提取，模型训练三个部分。前处理步骤中，完成局部图像的拼接，并通过SIFT描述子寻找时间方向的对应关系，获得云团运动的轨迹。特征描述中，将问题的特征归纳为3部分，分别为时间空间方向的矢量描述，云团形状的统计描述，及由云团轨迹外推得到目标站点的雷达反射率的空间图像描述。模型训练主模型采用了卷积神经网络CNN，图像部分采用2层卷积池化，随后将向量拉平到一维，即在全连接层与其余非图像类特征合并，共同输入到2个隐藏层的神经网络中。
 
-<div  align="center"> <img src="https://github.com/Jessicamidi/CIKM-Cup-2017/blob/master/pic/Structure.png" width="750" height="394" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="https://github.com/Jessicamidi/CIKM-Cup-2017/blob/master/pic/Structure.png" width="550" height="270" alt="Item-based filtering" /></div>
 
 
 ## 图像拼接
@@ -44,11 +44,11 @@
 ## 轨迹追踪
  根据流体力学中的泰勒冻结假设(Taylor Frozen Hypothesis)，流场中存在显著的时空关联特性，即可以认为雷达反射图中云团在短时间内趋向于在空间以当地平均对流速度平移，短时间内并不会发生外形或者反射强度的剧烈改变。即监测点x处在未来τ时刻后的雷达信号f，能够通过平均对流速度U，从当前时刻t位于坐标的x-Uτ的信号中体现：
 
-<div  align="center"> <img src="https://github.com/Jessicamidi/CIKM-Cup-2017/blob/master/pic/eqn-1.png" width="300" height="26" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="https://github.com/Jessicamidi/CIKM-Cup-2017/blob/master/pic/eqn-1.png" width="250" height="21" alt="Item-based filtering" /></div>
 
  为了寻找每个空间坐标对应的对流速度U， 可以通过SIFT描述子在一定时间间隔内，在空间坐标上的匹配，寻找相同关键点在较短时间间隔δt内像素的平移量δx,即得到空间每个位置处的对流速度。
 
-<div  align="center"> <img src="https://github.com/Jessicamidi/CIKM-Cup-2017/blob/master/pic/eqn-2.png" width="250" height="62" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="https://github.com/Jessicamidi/CIKM-Cup-2017/blob/master/pic/eqn-2.png" width="200" height="50" alt="Item-based filtering" /></div>
 
  下图给出了相邻两帧图像上，SIFT描述子及相应的空间匹配关系。其中圆圈大小对应了关键点的特征尺度，圆圈中的刻度方向表征其主方向。两帧图像的匹配连线基本平行，即全场以一个近似相同的速度作对流运动。
 
