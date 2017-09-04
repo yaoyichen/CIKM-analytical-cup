@@ -1,4 +1,4 @@
-## 雷达图像预测未来降水-CIKM AnalytiCup Top1清华团队思路分享
+# 雷达图像预测未来降水-CIKM AnalytiCup Top1清华团队思路分享
 
 <div  align="center"> <img src="http://static.zybuluo.com/Jessy923/yjrme4ex0yk17szix7f474uo/image.png" width="1250" height="230" alt="Item-based filtering" /></div>
 
@@ -8,7 +8,7 @@
 
  比赛官网：[阿里天池大数据平台](https://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100066.0.0.773ef42f8FXDoN&raceId=231596)
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/j5noh6pz5rmsb60kjpytfwvg/image.png" width="750" height="277" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/3bx4m8agc2lkgjikjkeqice6/image.png" width="750" height="277" alt="Item-based filtering" /></div>
 
 ## 赛题目标
 
@@ -19,14 +19,14 @@
 
 - 目标：利用各个雷达站点在不同高度上的雷达历史图像序列，预测图像中心位于[50,50]坐标位置的目标站点未来1-2小时之间的地面总降水量，损失函数为降水量预测值与真实值的均方误差。
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/g785gm4kp14tdv0t11ydk6jm/image.png" width="750" height="315" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/ad2ays0gtnd9kf5fxd5kqh97/image.png" width="750" height="315" alt="Item-based filtering" /></div>
 
 ## 算法架构
  本次比赛的特点在于时空序列的预测，即给出了目标站点周围一定空间范围的历史信息，需要预测在站点坐标上未来的降水走势，因而搭建时空之间的关联特性为解决问题的重中之重。同时有别于一般的计算机视觉问题，此次比赛提供的气象图像，其沿着时空方向的演化规律会满足一定的守恒律及连续性限制，发现物理问题的特殊性并寻找对应的表征量也是解决问题的关键。
 
  解决方案的流程分为前处理，特征提取，模型训练三个部分。前处理步骤中，完成局部图像的拼接，并通过SIFT描述子寻找时间方向的对应关系，获得云团运动的轨迹。特征描述中，将问题的特征归纳为3部分，分别为时间空间方向的矢量描述，云团形状的统计描述，及由云团轨迹外推得到目标站点的雷达反射率的空间图像描述。模型训练主模型采用了卷积神经网络CNN，图像部分采用2层卷积池化，随后将向量拉平到一维，即在全连接层与其余非图像类特征合并，共同输入到2个隐藏层的神经网络中。
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/9iydo568l2o1v98ma1hhrhgp/Structure.png" width="750" height="394" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/7c2waipyaxp3sg0s38yp1pgh/image.png" width="750" height="394" alt="Item-based filtering" /></div>
 
 
 ## 图像拼接
@@ -37,7 +37,7 @@
 
 2. 获得云团整体的结构，方便从更为宏观的视角提取特征描述云团形态。
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/qnze5nx51tguhl99jgqgr4p8/image.png" width="750" height="394" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/3feon792j8zjwrkhu1dxnrep/image.png" width="750" height="394" alt="Item-based filtering" /></div>
 
 <div  align="center"> <img src="http://static.zybuluo.com/Jessy923/zibvk7ft3werbpxtxmoce8ka/pin2.gif" width="750" height="514" alt="Item-based filtering" /></div>
  
@@ -52,7 +52,7 @@
 
  下图给出了相邻两帧图像上，SIFT描述子及相应的空间匹配关系。其中圆圈大小对应了关键点的特征尺度，圆圈中的刻度方向表征其主方向。两帧图像的匹配连线基本平行，即全场以一个近似相同的速度作对流运动。
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/7j37hrbprrxutndw420xe2ux/image.png" width="850" height="850" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/mwxwbewrprskzgkpifpwz789/image.png" width="850" height="850" alt="Item-based filtering" /></div>
 
 ## 特征提取
  特征包含时间外插反射率图像，时间空间的矢量，云团形状的统计描述三部分。
@@ -65,7 +65,7 @@ __时间和空间特征提取__: 在时间和空间方向（高度方向）提�
 
  __全局云团形状特征提取__: 某些特定的云层形态会对应典型降水事件。从拼接后的全局图像中提取云团形状的整体形态特征，包含雷达反射率的直方图和统计类信息、云团运动速度和方向、加速度、流线曲率、SIFT描述子的直方图、监测点位置、检测点反射率与最大值比值等。
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/4cehc3vk7bs49bgjdmr7uuyt/image.png" width="850" height="526" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/k84ihymh9riz3b4t3ec4f9xs/image.png" width="850" height="526" alt="Item-based filtering" /></div>
 
 ## 训练模型
 - 卷积层中图像的输入为时间外推得到目标站点附近41×41的空间范围，采用较大的空间图像输入，希望能够包含轨迹预测的误差以及测评目标在1小时内的总降水量。图像部分采用2层卷积池化，随后将向量拉平到一维，即在全连接层与其余非图像类特征合并，共同输入到2个隐藏层的神经网络中。
@@ -86,6 +86,4 @@ __时间和空间特征提取__: 在时间和空间方向（高度方向）提�
  姚易辰：yaoyichen23@163.com
 
  李中杰: lizhongjie1989@163.com
-
-
 
