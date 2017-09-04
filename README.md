@@ -8,7 +8,7 @@
 
  比赛官网：[阿里天池大数据平台](https://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100066.0.0.773ef42f8FXDoN&raceId=231596)
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/noz9bbtwsf7zmijsui58had3/image.png" width="750" height="277" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/j5noh6pz5rmsb60kjpytfwvg/image.png" width="750" height="277" alt="Item-based filtering" /></div>
 
 ## 赛题目标
 
