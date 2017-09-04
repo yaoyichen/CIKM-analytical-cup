@@ -1,6 +1,6 @@
 # 雷达图像预测未来降水-CIKM AnalytiCup Top1清华团队思路分享
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/yjrme4ex0yk17szix7f474uo/image.png" width="1250" height="230" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="https://github.com/Jessicamidi/CIKM-Cup-2017/blob/master/pic/CIKM%20Analyticup%202017.jpg" width="1250" height="230" alt="Item-based filtering" /></div>
 
     《基于雷达图像的短期降水预报》是由ACM顶级数据挖掘会议CIKM举办的数据科学竞赛。CIKM 2017以“智慧城市，智慧型国家”为主题，通过人工智能同各学科领域的交叉研究，通过技术手段有效管理城市。
 
