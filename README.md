@@ -26,7 +26,7 @@
 
  解决方案的流程分为前处理，特征提取，模型训练三个部分。前处理步骤中，完成局部图像的拼接，并通过SIFT描述子寻找时间方向的对应关系，获得云团运动的轨迹。特征描述中，将问题的特征归纳为3部分，分别为时间空间方向的矢量描述，云团形状的统计描述，及由云团轨迹外推得到目标站点的雷达反射率的空间图像描述。模型训练主模型采用了卷积神经网络CNN，图像部分采用2层卷积池化，随后将向量拉平到一维，即在全连接层与其余非图像类特征合并，共同输入到2个隐藏层的神经网络中。
 
-<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/7c2waipyaxp3sg0s38yp1pgh/image.png" width="750" height="394" alt="Item-based filtering" /></div>
+<div  align="center"> <img src="http://static.zybuluo.com/Jessy923/9iydo568l2o1v98ma1hhrhgp/Structure.png" width="750" height="394" alt="Item-based filtering" /></div>
 
 
 ## 图像拼接
