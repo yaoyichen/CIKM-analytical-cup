@@ -33,7 +33,7 @@ for set_name  in set_name_list:
         pic_sample = pd.read_csv(data_folder + set_name+ 'B_pic_sample.csv')
     
     for  H_ind in np.arange(2,5):
-		trace_save ={}
+        trace_save ={}
 
         for ind,value in pic_sample.iterrows():
             print(set_name + '_ height:' + str(H_ind ) + ' _pic_ind:' +  str(value.PIC_IND).zfill(5))
