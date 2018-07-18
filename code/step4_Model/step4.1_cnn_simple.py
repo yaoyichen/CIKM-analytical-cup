@@ -119,7 +119,7 @@ train_loss_list = []
 val_loss_list = []
 with tf.Session() as sess:
     tf.global_variables_initializer().run()
-#    split_ind = 4342
+    split_ind = 4342
     for i in range(1201):
 #        _,loss_value= sess.run([train_step,cost],feed_dict={x:trn_img[0:split_ind,:,:,:],y_true:Y[0:split_ind], features: trn_flat[0:split_ind],keep_prob:0.65})
 #        _,loss_value= sess.run([train_step,cost],feed_dict={x:trn_img[split_ind::,:,:,:],y_true:Y[split_ind::], features: trn_flat[split_ind::],keep_prob:0.55})
